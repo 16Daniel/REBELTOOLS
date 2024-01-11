@@ -52,7 +52,7 @@ namespace TRW1
             labelRFC.Text = _pedido.RFC;
             UltimoZ = z;
             supedidoCompra = _pedido.serie + "-" + _pedido.numero;
-
+            textBoxRemision.Text = _pedido.serie + "-" + _pedido.numero;
             CargarPedidos(SerieP, NumeroP);
             Procesador();
         }

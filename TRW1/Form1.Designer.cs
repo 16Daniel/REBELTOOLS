@@ -263,6 +263,7 @@
             this.textBoxRemision.Location = new System.Drawing.Point(578, 107);
             this.textBoxRemision.MaxLength = 15;
             this.textBoxRemision.Name = "textBoxRemision";
+            this.textBoxRemision.ReadOnly = true;
             this.textBoxRemision.Size = new System.Drawing.Size(167, 24);
             this.textBoxRemision.TabIndex = 20;
             // 
