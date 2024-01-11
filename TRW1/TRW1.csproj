@@ -1,0 +1,799 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{26E40934-AE01-4B79-8247-DA37BC4B8F99}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>TRW1</RootNamespace>
+    <AssemblyName>TRW1</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>C:\Users\Administrador\Desktop\tools\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>1</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>
+    </DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>4635FD1713C64447C74FC546A7FE62733BA7C98D</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>TRW1_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>false</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>false</SignManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <PropertyGroup>
+    <TargetZone>LocalIntranet</TargetZone>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Admin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Admin.Designer.cs">
+      <DependentUpon>Admin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Administrador.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Administrador.Designer.cs">
+      <DependentUpon>Administrador.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CreaUsuario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CreaUsuario.Designer.cs">
+      <DependentUpon>CreaUsuario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DirConexion.cs" />
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Login.Designer.cs">
+      <DependentUpon>Login.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\VerProcesos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Resources\VerProcesos.Designer.cs">
+      <DependentUpon>VerProcesos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ServidorConex.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ServidorConex.Designer.cs">
+      <DependentUpon>ServidorConex.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Subtotal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Subtotal.Designer.cs">
+      <DependentUpon>Subtotal.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Admin.resx">
+      <DependentUpon>Admin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Administrador.resx">
+      <DependentUpon>Administrador.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CreaUsuario.resx">
+      <DependentUpon>CreaUsuario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Login.resx">
+      <DependentUpon>Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ServidorConex.resx">
+      <DependentUpon>ServidorConex.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Subtotal.resx">
+      <DependentUpon>Subtotal.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="app.manifest" />
+    <None Include="FrontRest.bat" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\trw.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\candado.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\trw1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Tools.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\herras.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\registrarse.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\proveedol.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\user.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\kln.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\button-add.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\button-add1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\button-add2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\user.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\users.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\document-edit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\construction.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\user-card.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\key.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\weather-rain.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\user-card1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\address-book.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\box.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\gear.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\toggle-expand-alt.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\shopping-cart.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\outbox.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\chart-area-up.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\construction1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\construction2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\document-edit1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\user1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\users1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\key1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\users2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\users3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\keyboard.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\key2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\document-edit2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\construction3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\user-card2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\address-book1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\gear1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\toggle-expand.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\shopping-cart1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\outbox1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\chart-area-up1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\toggle-expand-alt1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\key3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\document-edit3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\construction4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\user-card3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\address-book2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\gear2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\toggle-expand-alt2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\shopping-cart2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\outbox2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\chart-area-up2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Daft_Punk_by_lajuanademiguel.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Fondo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\question-frame.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\question-balloon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\information-button.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\question-button.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\user2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\user3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\alarm-clock.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\alarm-clock1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\user4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\users4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\document-edit4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\button-add3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\button-remove.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\user-card4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\address-book3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\toggle-expand-alt3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\shopping-cart3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\clipboard.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\clipboard1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bin.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\archive.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\archive1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\search.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\outbox3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\exclamation.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\exclamation1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\anchor.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\exclamation2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\traffic-lights.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\traffic-lights1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\chart-bar-down.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\shapes.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\shapes1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\image.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\523.JPG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\667.JPG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\665.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\6671.JPG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\5231.JPG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\untitled.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\untitleded.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\button-shuffle.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\search1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\printer.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\printer1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\button-shuffle1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\document-edit5.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon-256x256.png" />
+    <None Include="Resources\71646d7673e8847ab07b3b7e78928777-buscar-icono-de-c--rculo-by-vexels.png" />
+    <None Include="Resources\Captura de Pantalla 2020-06-29 a la%28s%29 15.24.32.png" />
+    <None Include="Resources\formulario-iniciar-sesion-colorido-creativo_23-2147727235.jpg" />
+    <None Include="Resources\TICKET1.jpg" />
+    <None Include="Resources\Captura de Pantalla 2020-03-25 a la%28s%29 18.58.39.png" />
+    <None Include="Resources\Captura de Pantalla 2020-03-25 a la%28s%29 18.58.16.png" />
+    <None Include="Resources\11_codigo 1D con laser OMNIDIMENCIONAL.jpg" />
+    <None Include="Resources\sincronizar-icono-5476-128.png" />
+    <None Include="Resources\sincronizar-iphone3.jpg" />
+    <None Include="Resources\Leyendo-Codigo-Barras-83779.gif" />
+    <None Include="Resources\2016-05-251.png" />
+    <None Include="Resources\2016-05-25.png" />
+    <None Include="Resources\3541-blue-gradient-1680x1050-abstract-wallpaper.jpg" />
+    <None Include="Resources\Captura de pantalla %285%291.png" />
+    <None Include="Resources\Captura de pantalla %285%29.png" />
+    <None Include="Resources\slide_11.jpg" />
+    <None Include="Resources\login-form.png" />
+    <None Include="Resources\slide_1.jpg" />
+    <None Include="Resources\Captura de pantalla %281%29 - copia1.png" />
+    <None Include="Resources\Captura de pantalla %281%29 - copia.png" />
+    <None Include="Resources\Captura de pantalla %281%29.png" />
+    <None Include="Resources\check1.png" />
+    <None Include="Resources\check.png" />
+    <None Include="Resources\MB_0010_tasks2.png" />
+    <None Include="Resources\MB_0010_tasks1.png" />
+    <None Include="Resources\button-check.png" />
+    <None Include="Resources\tubo,,-48,3-2-m-9a47f02.png" />
+    <None Include="Resources\AF-301.png" />
+    <None Include="Resources\tubos1.png" />
+    <None Include="Resources\inicio-sesion.png" />
+    <None Include="Resources\user-group-icon.png" />
+    <None Include="Resources\Actions-user-group-delete-icon.png" />
+    <None Include="Resources\icono_srp %281%29.png" />
+    <None Include="Resources\descarga %282%29.jpg" />
+    <None Include="Resources\tubos.png" />
+    <None Include="Resources\document-edit6.png" />
+    <None Include="Resources\button-remove3.png" />
+    <None Include="Resources\de-configuracion-de-usuario-icono-8920-642.png" />
+    <None Include="Resources\search6.png" />
+    <None Include="Resources\edit.png" />
+    <None Include="Resources\minus.png" />
+    <None Include="Resources\add1.png" />
+    <None Include="Resources\male +.png" />
+    <None Include="Resources\Magnifier-01.png" />
+    <None Include="Resources\Reload-03.png" />
+    <None Include="Resources\base-de-datos-de-cilindro-icono-4621-641.png" />
+    <None Include="Resources\Add-011.png" />
+    <None Include="Resources\Add-02.png" />
+    <None Include="Resources\Add-01.png" />
+    <None Include="Resources\add.png" />
+    <None Include="Resources\de-configuracion-de-usuario-icono-8920-641.png" />
+    <None Include="Resources\search5.png" />
+    <None Include="Resources\user9.png" />
+    <None Include="Resources\edit_user.png" />
+    <None Include="Resources\delete_user.png" />
+    <None Include="Resources\add_user.png" />
+    <None Include="Resources\aceptar-comprobar-si-puede-icono-9389-64.png" />
+    <None Include="Resources\cajas-de-los-modulos-de-color-icono-5002-64 %281%29.png" />
+    <None Include="Resources\cajas-de-los-modulos-de-color-icono-5002-961.png" />
+    <None Include="Resources\cerrar-las-ventanas-de-programa-icono-9765-64.png" />
+    <None Include="Resources\stop-stop-desactivar-la-salida-icono-5982-64.png" />
+    <None Include="Resources\liberar-icono-3901-96.png" />
+    <None Include="Resources\cajon-del-gabinete-icono-4498-96.png" />
+    <None Include="Resources\cajon-del-gabinete-icono-4498-64.png" />
+    <None Include="Resources\archivador-gerente-de-cajon-de-archivo-icono-3801-96.png" />
+    <None Include="Resources\file-roller-icono-3785-96.png" />
+    <None Include="Resources\cajas-de-los-modulos-de-color-icono-5002-96.png" />
+    <None Include="Resources\base-de-datos-de-cilindro-icono-4621-64.png" />
+    <None Include="Resources\de-configuracion-de-usuario-icono-8920-64.png" />
+    <None Include="Resources\de-configuracion-de-usuario-icono-8920-128.png" />
+    <None Include="Resources\user8.png" />
+    <None Include="Resources\gear5.png" />
+    <None Include="Resources\archive3.png" />
+    <None Include="Resources\user-card5.png" />
+    <None Include="Resources\button-cross.png" />
+    <None Include="Resources\user7.png" />
+    <None Include="Resources\user6.png" />
+    <None Include="Resources\clipboard3.png" />
+    <None Include="Resources\briefcase1.png" />
+    <None Include="Resources\gear4.png" />
+    <None Include="Resources\Taverna_2.1_Splashscreen.jpg" />
+    <None Include="Resources\Taverna_2.1_Splashscreen.png" />
+    <None Include="Resources\cfc-splash-25.png" />
+    <None Include="Resources\cfc-splash-24.png" />
+    <None Include="Resources\cfc-splash-23.png" />
+    <None Include="Resources\4d547383-1ebd-45db-b53a-f8f17df5d5d2_5.jpg" />
+    <None Include="Resources\cfc-splash-22.png" />
+    <None Include="Resources\idcc2013-90-splash-4001.png" />
+    <None Include="Resources\idcc2013-90-splash1.jpg" />
+    <None Include="Resources\Cinema-4D-R13-Splash-Screen.jpg" />
+    <None Include="Resources\cfc-splash-21.png" />
+    <None Include="Resources\sony-vegas-12-splash-screen-520x245.png" />
+    <None Include="Resources\idcc2013-90-splash.jpg" />
+    <None Include="Resources\cfc-splash-2.png" />
+    <None Include="Resources\idcc2013-90-splash-400.png" />
+    <None Include="Resources\icon_256.png" />
+    <None Include="Resources\cancel1.png" />
+    <None Include="Resources\cancel.png" />
+    <None Include="Resources\MB_0020_sett-big4.png" />
+    <None Include="Resources\MB_0004_HW_info.png" />
+    <None Include="Resources\MB_0020_sett-big3.png" />
+    <None Include="Resources\MB_0020_sett-big2.png" />
+    <None Include="Resources\MB_0020_sett-big1.png" />
+    <None Include="Resources\MB_0020_sett-big.png" />
+    <None Include="Resources\metal-s-o-ibackgroundz.com.jpg" />
+    <None Include="Resources\metal-wallpaper-6910-7304-hd-wallpapers.jpg" />
+    <None Include="Resources\osx_hero_2x.jpg" />
+    <None Include="Resources\gg.png" />
+    <None Include="Resources\asdsad.png" />
+    <None Include="Resources\ssac.png" />
+    <None Include="Resources\Sin título1.png" />
+    <None Include="Resources\images %288%29.jpg" />
+    <None Include="Resources\cmm.jpg" />
+    <None Include="Resources\5-4-1b.jpg" />
+    <None Include="Resources\40708.png" />
+    <None Include="Resources\high-precision-conventional-lathes-61452-2730891.jpg" />
+    <None Include="Resources\tornos-convencionales-alta-precision-61452-2730965.jpg" />
+    <None Include="Resources\chart-bar1.png" />
+    <None Include="Resources\alarm-clock3.png" />
+    <None Include="Resources\MB_0015_reload.png" />
+    <None Include="Resources\maquinas-medicion-coordenadas-cmm-puente-5693-2441203.jpg" />
+    <None Include="Resources\39.jpg" />
+    <None Include="Resources\26.jpg" />
+    <None Include="Resources\31.jpg" />
+    <None Include="Resources\50.jpg" />
+    <None Include="Resources\16.jpg" />
+    <None Include="Resources\34.jpg" />
+    <None Include="Resources\11.jpg" />
+    <None Include="Resources\57.jpg" />
+    <None Include="Resources\55.jpg" />
+    <None Include="Resources\41.jpg" />
+    <None Include="Resources\32.jpg" />
+    <None Include="Resources\36.jpg" />
+    <None Include="Resources\51.jpg" />
+    <None Include="Resources\59.jpg" />
+    <None Include="Resources\8.jpg" />
+    <None Include="Resources\30.jpg" />
+    <None Include="Resources\17.jpg" />
+    <None Include="Resources\sierras-cinta-horizontales-mano-26882-3503711.jpg" />
+    <None Include="Resources\centro-mecanizado-horizontal-cnc-3-ejes-trabajos-pesados-P3940311.jpg" />
+    <None Include="Resources\14562.png" />
+    <None Include="Resources\centro-mecanizado-horizontal-cnc-3-ejes-trabajos-pesados-P394031.jpg" />
+    <None Include="Resources\descarga %284%29.jpg" />
+    <None Include="Resources\family-of-turning-centers-doosan-lynx-220-lathe.jpg" />
+    <None Include="Resources\cnc-turning-centers-high-productivity-26470-4321983.jpg" />
+    <None Include="Resources\Haas_CNC_ST-10Y.jpg" />
+    <None Include="Resources\st10_machine.jpg" />
+    <None Include="Resources\Doosan-Puma-GT2100-Series.jpg" />
+    <None Include="Resources\dnm400_front_close_6001.jpg" />
+    <None Include="Resources\dnm400_front_close_600.jpg" />
+    <None Include="Resources\dnm400.jpg" />
+    <None Include="Resources\Doosan-cnc.jpg" />
+    <None Include="Resources\Haas_VFOE_30x16x20.jpg" />
+    <None Include="Resources\document-file.png" />
+    <None Include="Resources\site-map.png" />
+    <None Include="Resources\flag.png" />
+    <None Include="Resources\chain.png" />
+    <None Include="Resources\link1.png" />
+    <None Include="Resources\traffic-lights2.png" />
+    <None Include="Resources\search4.png" />
+    <None Include="Resources\link.png" />
+    <None Include="Resources\thumb.jpg" />
+    <None Include="Resources\Capture-TOP-Cassy-Edited11.jpg" />
+    <None Include="Resources\cnc-turning1.jpg" />
+    <None Include="Resources\cnc-lathe1.jpg" />
+    <None Include="Resources\Capture-TOP-Cassy-Edited1.jpg" />
+    <None Include="Resources\cnc-turning.jpg" />
+    <None Include="Resources\cnc-lathe.jpg" />
+    <None Include="Resources\button-synchronize2.png" />
+    <None Include="Resources\clipboard2.png" />
+    <None Include="Resources\Sin título.png" />
+    <None Include="Resources\LOGO PASVA EN CORELd.png" />
+    <None Include="Resources\database.png" />
+    <None Include="Resources\users5.png" />
+    <None Include="Resources\hard-drive-download.png" />
+    <None Include="Resources\star.png" />
+    <None Include="Resources\alarm-clock2.png" />
+    <None Include="Resources\book-open-bookmark.png" />
+    <None Include="Resources\archive2.png" />
+    <None Include="Resources\LOGO PASVA EN COREL.png" />
+    <None Include="Resources\gear3.png" />
+    <None Include="Resources\MB_0019_plus1.png" />
+    <None Include="Resources\plusnegro.png" />
+    <None Include="Resources\search3.png" />
+    <None Include="Resources\button-synchronize1.png" />
+    <None Include="Resources\button-remove2.png" />
+    <None Include="Resources\search2.png" />
+    <None Include="Resources\button-add5.png" />
+    <None Include="Resources\user5.png" />
+    <None Include="Resources\button-power1.png" />
+    <None Include="Resources\briefcase.png" />
+    <None Include="Resources\chart-area-up3.png" />
+    <None Include="Resources\button-synchronize.png" />
+    <None Include="Resources\button-remove1.png" />
+    <None Include="Resources\button-add4.png" />
+    <None Include="Resources\button-power.png" />
+    <None Include="Resources\shield.png" />
+    <None Include="Resources\key4.png" />
+    <None Include="Resources\dark-blue-wallpaper-1920x1080-dark-abstract-black-wallpaper-hd-wallpapers--1920x1080px--indiwall.jpg" />
+    <None Include="Resources\Black_And_Rainbow_Neons_by_LucasRib1.jpg" />
+    <None Include="Resources\Black_And_Rainbow_Neons_by_LucasRib.jpg" />
+    <None Include="Resources\MB_0008_touch_copia.png" />
+    <None Include="Resources\MB_0015_reload2.png" />
+    <None Include="Resources\MB_0015_reload2blanco.png" />
+    <None Include="Resources\MB_0008_touch.png" />
+    <None Include="Resources\calendarnaranja.png" />
+    <None Include="Resources\calendar.png" />
+    <None Include="Resources\MB_0019_plus - copiablancos1.png" />
+    <None Include="Resources\plusnegrosacrojo.png" />
+    <None Include="Resources\plusnegrosac.png" />
+    <None Include="Resources\MS_0000s_0036_searchcopia1.png" />
+    <None Include="Resources\MS_0000s_0036_searchaxul1.png" />
+    <None Include="Resources\MB_0008_save copia2.png" />
+    <None Include="Resources\MB_0008_save copia1.png" />
+    <None Include="Resources\MB_0007_book1.png" />
+    <None Include="Resources\MS_0000s_0036_searchaxul.png" />
+    <None Include="Resources\MB_0019_shut-downrojo.png" />
+    <None Include="Resources\MB_0019_shut-down.png" />
+    <None Include="Resources\MB_0008_save copia.png" />
+    <None Include="Resources\MB_0008_saveblanco.png" />
+    <None Include="Resources\MB_0007_book_copias.png" />
+    <None Include="Resources\MB_0007_book.png" />
+    <None Include="Resources\MS_0000s_0036_searchcopia.png" />
+    <None Include="Resources\MS_0000s_0036_search.png" />
+    <None Include="Resources\MB_0019_plus.png" />
+    <None Include="Resources\MB_0019_plus - copiablancos.png" />
+    <None Include="Resources\MB_0019_plusblancos.png" />
+    <None Include="Resources\MB_0010_tasks_copia.png" />
+    <None Include="Resources\MB_0010_tasks.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.0,Profile=Client">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4 Client Profile %28x86 y x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.SQL.Server.Compact.3.5">
+      <Visible>False</Visible>
+      <ProductName>SQL Server Compact 3.5 SP2</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Sql.Server.Express.10.0">
+      <Visible>False</Visible>
+      <ProductName>SQL Server 2008 Express Edition</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.4.5">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 4.5</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\medallas.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\copa.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\logo5.3.ico" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
