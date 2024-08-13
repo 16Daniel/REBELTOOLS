@@ -21,10 +21,39 @@ namespace TRW1
         {
             InitializeComponent();
             conexion = dirCon.crearConexion();
-            comboTipo.DisplayMember = "1";
+            usuarios();
+        }
+        private void usuarios()
+        {
+            comboTipo.DisplayMember = "Text";
+            comboTipo.ValueMember = "Value";
+
+            List<ComboboxItem> list = new List<ComboboxItem>();
+
+
+            ComboboxItem item = new ComboboxItem();
+            item.Text = "SUPERVISOR";
+            item.Value = "1";
+            list.Add(item);
+
+            item = new ComboboxItem();
+            item.Text = "CAJERO";
+            item.Value = "3";
+            list.Add(item);
+
+            comboTipo.DataSource = list;
+        }
+        public class ComboboxItem
+        {
+            public string Text { get; set; }
+            public object Value { get; set; }
+
+            public override string ToString()
+            {
+                return Text;
+            }
         }
 
-       
 
         private void label1_Click(object sender, EventArgs e)
         {
@@ -211,21 +240,12 @@ namespace TRW1
         //    button1.BackgroundImage = Properties.Resources.MB_0008_saveblanco;
         //}
 
-        private void label4_Click_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void buttonAceptar_Click(object sender, EventArgs e)
         {
             if (textNombre.Text != "" && textBoxApellido.Text != "" && textContraseña.Text != "" && comboTipo.Text != "")
             {
-                guardarDatos(textNombre.Text, textBoxApellido.Text, textContraseña.Text, comboTipo.Text);
+                //MessageBox.Show("texto: " + comboTipo.Text + "  valor:" + comboTipo.SelectedValue);
+                guardarDatos(textNombre.Text, textBoxApellido.Text, textContraseña.Text, comboTipo.SelectedValue.ToString());
                 CreaUsuario_Load(sender, e);
                 Login frm = new Login();
 
@@ -270,6 +290,9 @@ namespace TRW1
             this.Hide();
         }
 
+        private void label12_Click(object sender, EventArgs e)
+        {
 
+        }
     }
 }

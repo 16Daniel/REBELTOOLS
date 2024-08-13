@@ -31,8 +31,9 @@ namespace TRW1
         {
             string Conexion = "Data Source =" + textServidor.Text + ";Initial Catalog=" + textBase.Text + ";User Id=" + textUsuario.Text + ";Password=" + textContraseña.Text + "";
             ConfigurationManager.AppSettings["conexion"] = Conexion;
-            //try
-            //{
+            
+            try
+            {
 
                 dirCon = new DirConexion();
                 con = dirCon.crearConexion();
@@ -70,7 +71,11 @@ namespace TRW1
                             {
                                 node.Attributes[1].Value = Conexion;
                             }
-                        
+                            if (node.Attributes[0].Value == "minutos")
+                            {
+                                node.Attributes[1].Value = textMinutos.Text;
+                            }
+
                         }
                     
                     }
@@ -78,12 +83,13 @@ namespace TRW1
                 }
                 XmlDoc.Save(AppDomain.CurrentDomain.SetupInformation.ConfigurationFile);
                 ConfigurationManager.RefreshSection("appSettings");
-            //}
-            //catch
-            //{
-            //    MessageBox.Show("Conexion no Exitosa " , "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                creaTabla();
+            }
+            catch
+            {
+                MessageBox.Show("Conexion no Exitosa ", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 
-            //}
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -103,6 +109,36 @@ namespace TRW1
 
             frm.Show(this);
             this.Hide();
+        }
+
+        private void creaTabla()
+        {
+
+            dirCon = new DirConexion();
+            //con = dirCon.crearConexion();
+            //SqlDataAdapter query = new SqlDataAdapter();
+            //query. = new SqlCommand("USE ["+textBase.Text+"] GO SET ANSI_NULLS ON GO SET QUOTED_IDENTIFIER ON GO CREATE TABLE [dbo].[TAYC25]([FECHAINI] [dbo].[DDATE] NULL,[SALA] [dbo].[DSMALLINT] NOT NULL,[MESA] [dbo].[DSMALLINT] NOT NULL,[TOTAL_AYC] [int] NULL,[COBROS] [int] NULL,[COBROS_MINIMOS] [int] NULL,[DIFERENCIA] [int] NOT NULL,[JUSTIFICACION] [nvarchar](max) NOT NULL,[USUARIO] [nvarchar](50) NULL) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY] GO", con);
+            try
+            {
+                using (var conexion = dirCon.crearConexion())
+                {
+                    conexion.Open();
+                    using (var comando = new SqlCommand())
+                    {
+                        comando.Connection = conexion;
+                        comando.CommandText = "CREATE TABLE [TMERMAS]([ID] [int] IDENTITY(1,1) NOT NULL,[FECHA] [dbo].[DDATE] NULL,[SERIE] [nvarchar](4) NOT NULL,[NUMERO] [dbo].[DINTEGER] NOT NULL,[CODARTICULO] [dbo].[DINTEGER] NULL,[REFERENCIA] [nvarchar](15) NULL,[DESCRIPCION] [nvarchar](45) NULL,[UNIDADES] [dbo].[DFLOAT] NULL,[PRECIO] [dbo].[DFLOAT] NULL,[JUSTIFICACION] [nvarchar](max) NOT NULL,[COMENTARIOS] [nvarchar](max) NOT NULL,[USUARIO] [nvarchar](50) NULL,[ENVIADO] [varchar](20) NULL) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]";
+                        comando.CommandType = CommandType.Text;
+                        comando.ExecuteNonQuery();
+                    }
+                }
+
+                MessageBox.Show("Se Creo Tabla ", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch
+            {
+                MessageBox.Show("Ya existe la Tabla ", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+
         }
     }
 }

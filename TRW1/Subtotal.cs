@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.Diagnostics;
 using System.Data.SqlClient;
+using System.Configuration;
 
 namespace TRW1
 {
@@ -132,7 +133,7 @@ namespace TRW1
             
         }
 
-        private int duration = 120;
+        private int duration = 60 * int.Parse(ConfigurationManager.AppSettings["minutos"]);
         private void StartSub()
         {
             labelTiempo.Text = "" +duration;

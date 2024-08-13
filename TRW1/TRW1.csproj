@@ -786,6 +786,7 @@
     <None Include="Resources\copa.PNG" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\depurar.png" />
     <Content Include="Resources\logo5.3.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

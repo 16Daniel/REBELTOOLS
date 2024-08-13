@@ -30,7 +30,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Administrador));
             this.button6 = new System.Windows.Forms.Button();
             this.label21 = new System.Windows.Forms.Label();
@@ -142,6 +142,10 @@
             this.dateTimePickerPI = new System.Windows.Forms.DateTimePicker();
             this.DGWPedidos = new System.Windows.Forms.DataGridView();
             this.tabPage7 = new System.Windows.Forms.TabPage();
+            this.textComentarios = new System.Windows.Forms.TextBox();
+            this.label42 = new System.Windows.Forms.Label();
+            this.comboJustifica = new System.Windows.Forms.ComboBox();
+            this.label39 = new System.Windows.Forms.Label();
             this.lbCodArt = new System.Windows.Forms.Label();
             this.label40 = new System.Windows.Forms.Label();
             this.btnGuardarMerma = new System.Windows.Forms.Button();
@@ -154,7 +158,14 @@
             this.tbxArtDesc = new System.Windows.Forms.TextBox();
             this.label36 = new System.Windows.Forms.Label();
             this.DGArt = new System.Windows.Forms.DataGridView();
+            this.tabPage8 = new System.Windows.Forms.TabPage();
+            this.bnImprime = new System.Windows.Forms.Button();
+            this.bnFiltraMermas = new System.Windows.Forms.Button();
+            this.dtpIniMermas = new System.Windows.Forms.DateTimePicker();
+            this.DGWMermas = new System.Windows.Forms.DataGridView();
+            this.pictureBox10 = new System.Windows.Forms.PictureBox();
             this.pictureBox7 = new System.Windows.Forms.PictureBox();
+            this.labelSucursal = new System.Windows.Forms.Label();
             this.tabPage4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAuditoria)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -181,6 +192,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.DGWPedidos)).BeginInit();
             this.tabPage7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DGArt)).BeginInit();
+            this.tabPage8.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.DGWMermas)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
             this.SuspendLayout();
             // 
@@ -223,7 +237,7 @@
             this.label23.AutoSize = true;
             this.label23.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label23.ForeColor = System.Drawing.Color.Crimson;
-            this.label23.Location = new System.Drawing.Point(358, 20);
+            this.label23.Location = new System.Drawing.Point(415, 6);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(164, 24);
             this.label23.TabIndex = 249;
@@ -318,14 +332,14 @@
             this.dataGridViewAuditoria.BackgroundColor = System.Drawing.Color.Gainsboro;
             this.dataGridViewAuditoria.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dataGridViewAuditoria.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.Lime;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewAuditoria.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Lime;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewAuditoria.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridViewAuditoria.Location = new System.Drawing.Point(6, 74);
             this.dataGridViewAuditoria.Name = "dataGridViewAuditoria";
             this.dataGridViewAuditoria.ReadOnly = true;
@@ -1225,6 +1239,7 @@
             this.tabControl1.Controls.Add(this.tabPage5);
             this.tabControl1.Controls.Add(this.tabPage6);
             this.tabControl1.Controls.Add(this.tabPage7);
+            this.tabControl1.Controls.Add(this.tabPage8);
             this.tabControl1.Location = new System.Drawing.Point(13, 75);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -1327,10 +1342,10 @@
             this.tabPage6.Controls.Add(this.dateTimePickerPF);
             this.tabPage6.Controls.Add(this.dateTimePickerPI);
             this.tabPage6.Controls.Add(this.DGWPedidos);
-            this.tabPage6.Location = new System.Drawing.Point(4, 27);
+            this.tabPage6.Location = new System.Drawing.Point(4, 22);
             this.tabPage6.Name = "tabPage6";
             this.tabPage6.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage6.Size = new System.Drawing.Size(610, 428);
+            this.tabPage6.Size = new System.Drawing.Size(610, 433);
             this.tabPage6.TabIndex = 8;
             this.tabPage6.Text = "PEDIDOS";
             this.tabPage6.UseVisualStyleBackColor = true;
@@ -1477,6 +1492,10 @@
             // 
             // tabPage7
             // 
+            this.tabPage7.Controls.Add(this.textComentarios);
+            this.tabPage7.Controls.Add(this.label42);
+            this.tabPage7.Controls.Add(this.comboJustifica);
+            this.tabPage7.Controls.Add(this.label39);
             this.tabPage7.Controls.Add(this.lbCodArt);
             this.tabPage7.Controls.Add(this.label40);
             this.tabPage7.Controls.Add(this.btnGuardarMerma);
@@ -1489,19 +1508,59 @@
             this.tabPage7.Controls.Add(this.tbxArtDesc);
             this.tabPage7.Controls.Add(this.label36);
             this.tabPage7.Controls.Add(this.DGArt);
-            this.tabPage7.Location = new System.Drawing.Point(4, 22);
+            this.tabPage7.Location = new System.Drawing.Point(4, 27);
             this.tabPage7.Name = "tabPage7";
             this.tabPage7.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage7.Size = new System.Drawing.Size(610, 433);
+            this.tabPage7.Size = new System.Drawing.Size(610, 428);
             this.tabPage7.TabIndex = 9;
             this.tabPage7.Text = "MERMAS";
             this.tabPage7.UseVisualStyleBackColor = true;
+            // 
+            // textComentarios
+            // 
+            this.textComentarios.Location = new System.Drawing.Point(265, 349);
+            this.textComentarios.Multiline = true;
+            this.textComentarios.Name = "textComentarios";
+            this.textComentarios.Size = new System.Drawing.Size(339, 73);
+            this.textComentarios.TabIndex = 279;
+            // 
+            // label42
+            // 
+            this.label42.AutoSize = true;
+            this.label42.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label42.Location = new System.Drawing.Point(262, 328);
+            this.label42.Name = "label42";
+            this.label42.Size = new System.Drawing.Size(135, 18);
+            this.label42.TabIndex = 278;
+            this.label42.Text = "COMENTARIOS:";
+            // 
+            // comboJustifica
+            // 
+            this.comboJustifica.FormattingEnabled = true;
+            this.comboJustifica.Items.AddRange(new object[] {
+            "MERMA OPERATIVA",
+            "MERMA NATURAL",
+            "MERMA PROVEEDOR"});
+            this.comboJustifica.Location = new System.Drawing.Point(10, 349);
+            this.comboJustifica.Name = "comboJustifica";
+            this.comboJustifica.Size = new System.Drawing.Size(238, 26);
+            this.comboJustifica.TabIndex = 277;
+            // 
+            // label39
+            // 
+            this.label39.AutoSize = true;
+            this.label39.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label39.Location = new System.Drawing.Point(7, 328);
+            this.label39.Name = "label39";
+            this.label39.Size = new System.Drawing.Size(136, 18);
+            this.label39.TabIndex = 276;
+            this.label39.Text = "JUSTIFICACION:";
             // 
             // lbCodArt
             // 
             this.lbCodArt.AutoSize = true;
             this.lbCodArt.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbCodArt.Location = new System.Drawing.Point(183, 337);
+            this.lbCodArt.Location = new System.Drawing.Point(180, 294);
             this.lbCodArt.Name = "lbCodArt";
             this.lbCodArt.Size = new System.Drawing.Size(13, 18);
             this.lbCodArt.TabIndex = 275;
@@ -1511,7 +1570,7 @@
             // 
             this.label40.AutoSize = true;
             this.label40.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label40.Location = new System.Drawing.Point(183, 317);
+            this.label40.Location = new System.Drawing.Point(180, 274);
             this.label40.Name = "label40";
             this.label40.Size = new System.Drawing.Size(132, 18);
             this.label40.TabIndex = 274;
@@ -1521,7 +1580,7 @@
             // 
             this.btnGuardarMerma.BackColor = System.Drawing.Color.DarkOrange;
             this.btnGuardarMerma.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGuardarMerma.Location = new System.Drawing.Point(494, 380);
+            this.btnGuardarMerma.Location = new System.Drawing.Point(92, 394);
             this.btnGuardarMerma.Name = "btnGuardarMerma";
             this.btnGuardarMerma.Size = new System.Drawing.Size(101, 28);
             this.btnGuardarMerma.TabIndex = 273;
@@ -1533,9 +1592,9 @@
             // 
             this.txtUdsMermas.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtUdsMermas.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtUdsMermas.Location = new System.Drawing.Point(7, 382);
+            this.txtUdsMermas.Location = new System.Drawing.Point(449, 254);
             this.txtUdsMermas.Name = "txtUdsMermas";
-            this.txtUdsMermas.Size = new System.Drawing.Size(181, 26);
+            this.txtUdsMermas.Size = new System.Drawing.Size(155, 26);
             this.txtUdsMermas.TabIndex = 272;
             this.txtUdsMermas.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtUdsMermas.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxMermas_KeyPress);
@@ -1544,7 +1603,7 @@
             // 
             this.label43.AutoSize = true;
             this.label43.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label43.Location = new System.Drawing.Point(7, 361);
+            this.label43.Location = new System.Drawing.Point(449, 233);
             this.label43.Name = "label43";
             this.label43.Size = new System.Drawing.Size(155, 18);
             this.label43.TabIndex = 271;
@@ -1554,7 +1613,7 @@
             // 
             this.lbUnidadMed.AutoSize = true;
             this.lbUnidadMed.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbUnidadMed.Location = new System.Drawing.Point(7, 337);
+            this.lbUnidadMed.Location = new System.Drawing.Point(7, 294);
             this.lbUnidadMed.Name = "lbUnidadMed";
             this.lbUnidadMed.Size = new System.Drawing.Size(13, 18);
             this.lbUnidadMed.TabIndex = 270;
@@ -1564,7 +1623,7 @@
             // 
             this.label41.AutoSize = true;
             this.label41.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label41.Location = new System.Drawing.Point(7, 317);
+            this.label41.Location = new System.Drawing.Point(7, 274);
             this.label41.Name = "label41";
             this.label41.Size = new System.Drawing.Size(143, 18);
             this.label41.TabIndex = 269;
@@ -1574,7 +1633,7 @@
             // 
             this.lbArtMerma.AutoSize = true;
             this.lbArtMerma.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbArtMerma.Location = new System.Drawing.Point(7, 287);
+            this.lbArtMerma.Location = new System.Drawing.Point(7, 253);
             this.lbArtMerma.Name = "lbArtMerma";
             this.lbArtMerma.Size = new System.Drawing.Size(13, 18);
             this.lbArtMerma.TabIndex = 268;
@@ -1584,7 +1643,7 @@
             // 
             this.label38.AutoSize = true;
             this.label38.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label38.Location = new System.Drawing.Point(7, 267);
+            this.label38.Location = new System.Drawing.Point(7, 233);
             this.label38.Name = "label38";
             this.label38.Size = new System.Drawing.Size(95, 18);
             this.label38.TabIndex = 267;
@@ -1594,7 +1653,7 @@
             // 
             this.tbxArtDesc.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.tbxArtDesc.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbxArtDesc.Location = new System.Drawing.Point(6, 43);
+            this.tbxArtDesc.Location = new System.Drawing.Point(120, 14);
             this.tbxArtDesc.Name = "tbxArtDesc";
             this.tbxArtDesc.Size = new System.Drawing.Size(258, 26);
             this.tbxArtDesc.TabIndex = 266;
@@ -1617,7 +1676,7 @@
             this.DGArt.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.DGArt.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.DGArt.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DGArt.Location = new System.Drawing.Point(6, 76);
+            this.DGArt.Location = new System.Drawing.Point(6, 46);
             this.DGArt.Name = "DGArt";
             this.DGArt.ReadOnly = true;
             this.DGArt.RowHeadersVisible = false;
@@ -1625,6 +1684,78 @@
             this.DGArt.Size = new System.Drawing.Size(598, 179);
             this.DGArt.TabIndex = 2;
             this.DGArt.Click += new System.EventHandler(this.DGArt_Click);
+            // 
+            // tabPage8
+            // 
+            this.tabPage8.Controls.Add(this.bnImprime);
+            this.tabPage8.Controls.Add(this.bnFiltraMermas);
+            this.tabPage8.Controls.Add(this.dtpIniMermas);
+            this.tabPage8.Controls.Add(this.DGWMermas);
+            this.tabPage8.Location = new System.Drawing.Point(4, 27);
+            this.tabPage8.Name = "tabPage8";
+            this.tabPage8.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage8.Size = new System.Drawing.Size(610, 428);
+            this.tabPage8.TabIndex = 10;
+            this.tabPage8.Text = "IMPRESION";
+            this.tabPage8.UseVisualStyleBackColor = true;
+            // 
+            // bnImprime
+            // 
+            this.bnImprime.BackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.bnImprime.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bnImprime.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bnImprime.ForeColor = System.Drawing.Color.White;
+            this.bnImprime.Location = new System.Drawing.Point(6, 318);
+            this.bnImprime.Name = "bnImprime";
+            this.bnImprime.Size = new System.Drawing.Size(176, 40);
+            this.bnImprime.TabIndex = 7;
+            this.bnImprime.Text = "IMPRIMIR";
+            this.bnImprime.UseVisualStyleBackColor = false;
+            this.bnImprime.Click += new System.EventHandler(this.buttonImprime_Click);
+            // 
+            // bnFiltraMermas
+            // 
+            this.bnFiltraMermas.Location = new System.Drawing.Point(145, 20);
+            this.bnFiltraMermas.Name = "bnFiltraMermas";
+            this.bnFiltraMermas.Size = new System.Drawing.Size(89, 29);
+            this.bnFiltraMermas.TabIndex = 6;
+            this.bnFiltraMermas.Text = "FILTRAR";
+            this.bnFiltraMermas.UseVisualStyleBackColor = true;
+            this.bnFiltraMermas.Click += new System.EventHandler(this.button11_Click_2);
+            // 
+            // dtpIniMermas
+            // 
+            this.dtpIniMermas.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpIniMermas.Location = new System.Drawing.Point(6, 21);
+            this.dtpIniMermas.Name = "dtpIniMermas";
+            this.dtpIniMermas.Size = new System.Drawing.Size(124, 24);
+            this.dtpIniMermas.TabIndex = 4;
+            // 
+            // DGWMermas
+            // 
+            this.DGWMermas.AllowUserToAddRows = false;
+            this.DGWMermas.AllowUserToDeleteRows = false;
+            this.DGWMermas.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.DGWMermas.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.DGWMermas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DGWMermas.Location = new System.Drawing.Point(6, 55);
+            this.DGWMermas.Name = "DGWMermas";
+            this.DGWMermas.ReadOnly = true;
+            this.DGWMermas.RowHeadersVisible = false;
+            this.DGWMermas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.DGWMermas.Size = new System.Drawing.Size(598, 247);
+            this.DGWMermas.TabIndex = 3;
+            // 
+            // pictureBox10
+            // 
+            this.pictureBox10.Image = global::TRW1.Properties.Resources.depurar;
+            this.pictureBox10.Location = new System.Drawing.Point(332, 540);
+            this.pictureBox10.Name = "pictureBox10";
+            this.pictureBox10.Size = new System.Drawing.Size(32, 33);
+            this.pictureBox10.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox10.TabIndex = 267;
+            this.pictureBox10.TabStop = false;
+            this.pictureBox10.DoubleClick += new System.EventHandler(this.pictureBox10_DoubleClick);
             // 
             // pictureBox7
             // 
@@ -1636,11 +1767,24 @@
             this.pictureBox7.TabIndex = 245;
             this.pictureBox7.TabStop = false;
             // 
+            // labelSucursal
+            // 
+            this.labelSucursal.AutoSize = true;
+            this.labelSucursal.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelSucursal.ForeColor = System.Drawing.Color.Crimson;
+            this.labelSucursal.Location = new System.Drawing.Point(175, 4);
+            this.labelSucursal.Name = "labelSucursal";
+            this.labelSucursal.Size = new System.Drawing.Size(0, 24);
+            this.labelSucursal.TabIndex = 268;
+            this.labelSucursal.Visible = false;
+            // 
             // Administrador
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(653, 579);
+            this.Controls.Add(this.labelSucursal);
+            this.Controls.Add(this.pictureBox10);
             this.Controls.Add(this.button13);
             this.Controls.Add(this.textBoxUltimoZ);
             this.Controls.Add(this.label35);
@@ -1664,6 +1808,7 @@
             this.Text = "CAMBIOS FRONT REST";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Administrador_FormClosed);
             this.Load += new System.EventHandler(this.Administrador_Load);
+            this.DoubleClick += new System.EventHandler(this.Administrador_DoubleClick);
             this.tabPage4.ResumeLayout(false);
             this.tabPage4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAuditoria)).EndInit();
@@ -1699,6 +1844,9 @@
             this.tabPage7.ResumeLayout(false);
             this.tabPage7.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DGArt)).EndInit();
+            this.tabPage8.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.DGWMermas)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -1829,5 +1977,16 @@
         private System.Windows.Forms.DataGridView DGArt;
         private System.Windows.Forms.Label lbCodArt;
         private System.Windows.Forms.Label label40;
+        private System.Windows.Forms.PictureBox pictureBox10;
+        private System.Windows.Forms.Label label39;
+        private System.Windows.Forms.ComboBox comboJustifica;
+        private System.Windows.Forms.TextBox textComentarios;
+        private System.Windows.Forms.Label label42;
+        private System.Windows.Forms.TabPage tabPage8;
+        private System.Windows.Forms.Button bnFiltraMermas;
+        private System.Windows.Forms.DateTimePicker dtpIniMermas;
+        private System.Windows.Forms.DataGridView DGWMermas;
+        private System.Windows.Forms.Button bnImprime;
+        private System.Windows.Forms.Label labelSucursal;
     }
 }

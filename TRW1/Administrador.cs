@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Printing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.Data.Sql;
 using System.Data.SqlClient;
 using System.Diagnostics;
+using System.Configuration;
 namespace TRW1
 
 
@@ -27,6 +29,7 @@ namespace TRW1
         DataSet ds = new DataSet();
         SqlDataAdapter adap1 = new SqlDataAdapter();
         DataSet ds1 = new DataSet();
+        List<Mermas> empList = new List<Mermas>();
 
         public string arquitectura;
 
@@ -34,7 +37,8 @@ namespace TRW1
         public string _Mensaje;
         public string Usuario;
         public Pedido PedidosCompra = new Pedido();
-
+        public string AlmMermas;
+        public string AlmNombreM;
 
         public Administrador()
         {
@@ -50,6 +54,7 @@ namespace TRW1
             CargaSalas();
             //CargaSalas(2);
             Procesador();
+            bnImprime.Enabled = false;
 
         }
 
@@ -66,11 +71,13 @@ namespace TRW1
 
                 
                 button13.Enabled = false;
+                pictureBox10.Enabled = false;
             }
-            if (Usuario == "3")
+            if (Usuario == "3" || Usuario == "4")
             {
 
                 button13.Enabled = false;
+                pictureBox10.Enabled = false;
                 this.tabControl1.TabPages.Remove(this.TOTALES);
                 this.tabControl1.TabPages.Remove(this.MESAS);
                 this.tabControl1.TabPages.Remove(this.SUBTOTALES);
@@ -80,6 +87,7 @@ namespace TRW1
                 this.tabControl1.TabPages.Remove(this.tabPage4);
                 this.tabControl1.TabPages.Remove(this.tabPage5);
                 this.tabControl1.TabPages.Remove(this.tabPage7);
+                this.tabControl1.TabPages.Remove(this.tabPage8);
 
             }
 
@@ -96,8 +104,8 @@ namespace TRW1
             dataGridViewAuditoria.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             con.Close();
             textBoxUltimoZ.Text = consultazeta();
-            
-            
+            AlmMermas = consulAlmMerma();
+            AlmNombreM = consulAlmNom();
             
             
 
@@ -324,6 +332,8 @@ namespace TRW1
             else { DGWRanking.Enabled = false; con.Close(); }
         }
 
+        
+
         DataTable dirPedidos = new DataTable();
         private void CargarPedidos()
         {
@@ -532,7 +542,7 @@ private void Cambio(string SOrigen, string MOrigen, string SDestino, string MDes
                 {
                     timerCierraP.Stop();
                     AccionLiberar(label20.Text, label23.Text, CBSubtotalM.Text);
-                    MessageBox.Show("TENDRAS 2 MINUTO PARA REALIZAR EL AJUSTE", "AVISO", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+                    MessageBox.Show("TENDRAS "+ ConfigurationManager.AppSettings["minutos"] +" MINUTO PARA REALIZAR EL AJUSTE", "AVISO", MessageBoxButtons.OK, MessageBoxIcon.Hand);
                     Subtotal fmr = new Subtotal();
                     fmr.Show();
                     this.Hide();
@@ -1670,7 +1680,7 @@ private void Cambio(string SOrigen, string MOrigen, string SDestino, string MDes
             {
                 DateTime dia = DateTime.Now;
 
-            con.Open();
+                con.Open();
                 SqlDataAdapter query = new SqlDataAdapter();
                 query.InsertCommand = new SqlCommand("INSERT INTO  TRASPALMACEN(SERIE, NUMERO, LINEA, CODALMORIG, CODALMDEST, FECHA, CODARTICULO, REFERENCIA, DESCRIPCION, UNIDADES, PRECIO, USUARIO, CAJA, Z, STOCK, DESCARGADO, FECHACREACION, IMPRESIONES, ESRECUENTO, OBSERVACIONES)"
                                                                        + "VALUES(@Serie,@Traspaso,0,@Origen,@Destino,@Dia,@CodArt,@Referencia,@Descripcion,@Uds,@Precio,'',1,@Z,@Stock,'T',@Dia,1,0,'')", con);
@@ -1695,6 +1705,32 @@ private void Cambio(string SOrigen, string MOrigen, string SDestino, string MDes
 
                 query.InsertCommand.ExecuteNonQuery();
                 con.Close();
+
+                con.Open();
+                SqlDataAdapter query1 = new SqlDataAdapter();
+                query1.InsertCommand = new SqlCommand("INSERT INTO [TMERMAS]([FECHA],[SERIE],[NUMERO],[CODARTICULO],[REFERENCIA],[DESCRIPCION],[UNIDADES],[PRECIO],[JUSTIFICACION],[COMENTARIOS],[USUARIO])"
+                                                                       + "VALUES (@Dia,@Serie,@Traspaso,@CodArt,@Referencia,@Descripcion,@Uds,@Precio,@Justificacion,@Comentarios,@Usu)", con);
+
+
+
+                query1.InsertCommand.Parameters.Add("@Serie", SqlDbType.NVarChar).Value = SerieTraspaso;
+                query1.InsertCommand.Parameters.Add("@Traspaso", SqlDbType.Int).Value = int.Parse(NumeroTraspaso);
+                query1.InsertCommand.Parameters.Add("@Dia", SqlDbType.DateTime).Value = dia;
+                query1.InsertCommand.Parameters.Add("@CodArt", SqlDbType.Int).Value = int.Parse(lbCodArt.Text);
+                query1.InsertCommand.Parameters.Add("@Referencia", SqlDbType.NVarChar).Value = Ref;
+                query1.InsertCommand.Parameters.Add("@Descripcion", SqlDbType.NVarChar).Value = Desc;
+                query1.InsertCommand.Parameters.Add("@Uds", SqlDbType.Float).Value = float.Parse(txtUdsMermas.Text);
+                query1.InsertCommand.Parameters.Add("@Precio", SqlDbType.Float).Value = float.Parse(UltCost);
+                query1.InsertCommand.Parameters.Add("@Justificacion", SqlDbType.NVarChar).Value = comboJustifica.Text;
+                query1.InsertCommand.Parameters.Add("@Comentarios", SqlDbType.NVarChar).Value = comboJustifica.Text;
+                query1.InsertCommand.Parameters.Add("@Usu", SqlDbType.NVarChar).Value = label20.Text;
+
+
+
+
+                query1.InsertCommand.ExecuteNonQuery();
+                con.Close();
+
                 AccionREMTrasp();
                 MessageBox.Show("SE GENERO EL REGISTRO CORRECTAMENTE");
                 lbArtMerma.Text = "-";
@@ -1847,6 +1883,208 @@ private void Cambio(string SOrigen, string MOrigen, string SDestino, string MDes
 
         }
 
+        private void Administrador_DoubleClick(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox10_DoubleClick(object sender, EventArgs e)
+        {
+            DialogResult ms;
+
+            ms = MessageBox.Show("ESTA OPERACION BORRARA TODOS LOS USUARIOS. CONFIRMAS LA ACCION?", "AVISO", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (ms == DialogResult.Yes)
+            {
+                //operacion para truncar la tabla 
+                dirCon = new DirConexion();
+                //con = dirCon.crearConexion();
+                //SqlDataAdapter query = new SqlDataAdapter();
+                //query. = new SqlCommand("USE ["+textBase.Text+"] GO SET ANSI_NULLS ON GO SET QUOTED_IDENTIFIER ON GO CREATE TABLE [dbo].[TAYC25]([FECHAINI] [dbo].[DDATE] NULL,[SALA] [dbo].[DSMALLINT] NOT NULL,[MESA] [dbo].[DSMALLINT] NOT NULL,[TOTAL_AYC] [int] NULL,[COBROS] [int] NULL,[COBROS_MINIMOS] [int] NULL,[DIFERENCIA] [int] NOT NULL,[JUSTIFICACION] [nvarchar](max) NOT NULL,[USUARIO] [nvarchar](50) NULL) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY] GO", con);
+                try
+                {
+                    using (var conexion = dirCon.crearConexion())
+                    {
+                        conexion.Open();
+                        using (var comando = new SqlCommand())
+                        {
+                            comando.Connection = conexion;
+                            comando.CommandText = "TRUNCATE TABLE TUSUARIOS INSERT INTO TUSUARIOS(Nombre, Apellido, Contraseña, Acceso, Status) VALUES (N'SISTEMAS', N'SISTEMAS', N'Sist3m4s19315', 2, 1) INSERT  INTO TUSUARIOS(Nombre, Apellido, Contraseña, Acceso, Status) VALUES (N'CAJERO', N'CAJERO', N'1234', 4, 1)";
+                            comando.CommandType = CommandType.Text;
+                            comando.ExecuteNonQuery();
+                        }
+                    }
+
+                    MessageBox.Show("SE DEPURARON LOS USUARIOS ", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                catch
+                {
+                    MessageBox.Show("NO SE PUDO DEPURAR", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
+
+            }
+            else
+            {
+
+                if (ms == DialogResult.No)
+                {
+
+                    MessageBox.Show("OPERACION CANCELADA.", "AVISO", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+                }
+            }
+        }
+
+        private void button11_Click_2(object sender, EventArgs e)
+        {
+            CargarMermas();
+        }
+
+        private PrintDocument PD = new PrintDocument();
+
+        private void buttonImprime_Click(object sender, EventArgs e)
+        {
+            PD = new PrintDocument();
+            PrinterSettings ps = new PrinterSettings();
+            PD.PrinterSettings = ps;
+            PD.PrintPage += Imprimir;
+
+
+
+            PrintDialog pdi = new PrintDialog();
+            pdi.Document = PD;
+            if (pdi.ShowDialog() == DialogResult.OK)
+            {
+                PD.Print();
+            }
+            else
+            {
+                MessageBox.Show("SE CANCELO LA IMPRESION");
+            }
+        }
+
+        private void Imprimir(object sender, PrintPageEventArgs e)
+        {
+
+
+
+            //Font font = new Font("Arial", 10, FontStyle.Regular, GraphicsUnit.Point);
+            //int width = 200;
+            //int y = 20;
+
+            //e.Graphics.DrawString("MERMAS DE (SUCURSAL)", font, Brushes.Black, new RectangleF(0, y += 20, width, 20));
+            //e.Graphics.DrawString("==================================", font, Brushes.Black, new RectangleF(0, y += 20, width, 20));
+            //foreach (var obj in empList)
+            //{
+
+            //    e.Graphics.DrawString(""+obj.Descripcion, font, Brushes.Black, new RectangleF(0, y += 20, width, 20));
+            //    e.Graphics.DrawString("UDS: "+obj.unidades, font, Brushes.Black, new RectangleF(0, y += 20, width, 20));
+            //    e.Graphics.DrawString("IMPORTE: "+(obj.precio*obj.unidades), font, Brushes.Black, new RectangleF(0, y += 20, width, 20));
+            //    e.Graphics.DrawString("", font, Brushes.Black, new RectangleF(0, y += 20, width, 20));
+            //}
+            //e.Graphics.DrawString("==================================", font, Brushes.Black, new RectangleF(0, y += 20, width, 20));
+            //e.Graphics.DrawString("", font, Brushes.Black, new RectangleF(0, y += 20, width, 20));
+            //e.Graphics.DrawString("", font, Brushes.Black, new RectangleF(0, y += 20, width, 20));
+            //e.Graphics.DrawString("", font, Brushes.Black, new RectangleF(0, y += 20, width, 20));
+            //e.Graphics.DrawString("__________________________________", font, Brushes.Black, new RectangleF(0, y += 20, width, 20));
+            //e.Graphics.DrawString("SELLO Y FIRMA", font, Brushes.Black, new RectangleF(0, y += 20, width, 20));
+
+
+            Font f8 = new Font("Calibri", 8, FontStyle.Regular);
+            Font f10 = new Font("Calibri", 10, FontStyle.Regular);
+            Font f10b = new Font("Calibri", 10, FontStyle.Bold);
+            Font f14 = new Font("Calibri", 14, FontStyle.Bold);
+
+            int leftmargin = PD.DefaultPageSettings.Margins.Left;
+            int centermargin = PD.DefaultPageSettings.PaperSize.Width / 2;
+            int rightmargin = PD.DefaultPageSettings.PaperSize.Width;
+
+            StringFormat right = new StringFormat();
+            StringFormat center = new StringFormat();
+            right.Alignment = StringAlignment.Far;
+            center.Alignment = StringAlignment.Center;
+                                                                                            //
+            string line = "==================================================================";
+
+
+            e.Graphics.DrawString("ALMACEN:", f10, Brushes.Black, centermargin, 40, center);
+            e.Graphics.DrawString(AlmNombreM, f10, Brushes.Black, centermargin, 55, center);
+
+            //e.Graphics.DrawString("Factura N", f8, Brushes.Black, 0, 75);
+            //e.Graphics.DrawString(":", f8, Brushes.Black, 50, 75);
+            //e.Graphics.DrawString("01234568", f8, Brushes.Black, 70, 75);
+
+            //e.Graphics.DrawString("Cajero", f8, Brushes.Black, 0, 85);
+            //e.Graphics.DrawString(":", f8, Brushes.Black, 50, 85);
+            //e.Graphics.DrawString("Nombre del cajero", f8, Brushes.Black, 70, 85);
+
+            //e.Graphics.DrawString("Fecha: " + DateTime.Now.ToShortDateString() + " - Hora: " + DateTime.Now.ToShortTimeString(), f8, Brushes.Black, 0, 95);
+            e.Graphics.DrawString("Fecha: " + dtpIniMermas.Value.ToString("dd/MM/yyyy"), f8, Brushes.Black, 0, 95);
+
+            //e.Graphics.DrawString("Cant.", f8, Brushes.Black, 0, 110);
+            //e.Graphics.DrawString("Descripción.", f8, Brushes.Black, 25, 110);
+            ////%
+            ////e.Graphics.DrawString("%", f8, Brushes.Black, 140, 110);
+
+            //e.Graphics.DrawString("Valor", f8, Brushes.Black, 180, 110, right);
+            //e.Graphics.DrawString("Total", f8, Brushes.Black, rightmargin, 110, right);
+
+            e.Graphics.DrawString(line, f8, Brushes.Black, 0, 110);
+
+            int height = 0;
+            //decimal i;
+            //DataGridView1.AllowUserToAddRows = false;
+
+            //for (int row = 0; row < DataGridView1.RowCount; row++)
+            //{
+            //    height += 15;
+            //    e.Graphics.DrawString(DataGridView1.Rows[row].Cells[1].Value.ToString(), f8, Brushes.Black, 0, 115 + height);
+            //    e.Graphics.DrawString(DataGridView1.Rows[row].Cells[0].Value.ToString(), f8, Brushes.Black, 25, 115 + height);
+            //    i = Convert.ToDecimal(DataGridView1.Rows[row].Cells[2].Value);
+            //    DataGridView1.Rows[row].Cells[2].Value = i.ToString("##,##0");
+
+            //    //%
+            //    //e.Graphics.DrawString("19", f8, Brushes.Black, 150, 115 + height, right);
+
+            //    e.Graphics.DrawString(DataGridView1.Rows[row].Cells[2].Value.ToString(), f8, Brushes.Black, 180, 115 + height, right);
+
+            //    decimal totalprice = Convert.ToDecimal(DataGridView1.Rows[row].Cells[1].Value) * Convert.ToDecimal(DataGridView1.Rows[row].Cells[2].Value);
+            //    e.Graphics.DrawString(totalprice.ToString("##,##0"), f8, Brushes.Black, rightmargin, 115 + height, right);
+            //}
+
+            foreach (var obj in empList)
+            {
+                height += 15;
+                e.Graphics.DrawString("REF: "+obj.Referencia.ToString(), f8, Brushes.Black, 0, 115 + height);
+                e.Graphics.DrawString("ART: "+obj.Descripcion.ToString(), f8, Brushes.Black, 60, 115 + height);
+                height += 10;
+                e.Graphics.DrawString("UDS: "+obj.unidades.ToString(), f8, Brushes.Black, 0, 115 + height);
+                e.Graphics.DrawString("$ "+obj.precio.ToString(), f8, Brushes.Black, 60, 115 + height);
+                height += 10;
+            }
+
+            int height2 = 125 + height;
+
+            e.Graphics.DrawString(line, f8, Brushes.Black, 0, height2);
+            e.Graphics.DrawString(".", f8, Brushes.Black, new RectangleF(0, height2 += 100, 200, 20));
+            e.Graphics.DrawString(".", f8, Brushes.Black, new RectangleF(0, height2 += 100, 200, 20));
+            e.Graphics.DrawString(".", f8, Brushes.Black, new RectangleF(0, height2 += 100, 200, 20));
+            e.Graphics.DrawString(".", f8, Brushes.Black, new RectangleF(0, height2 += 100, 200, 20));
+            e.Graphics.DrawString(".", f8, Brushes.Black, new RectangleF(0, height2 += 100, 200, 20));
+            //e.Graphics.DrawString(".", f8, Brushes.Black, new RectangleF(0, height2 += 100, 200, 20));
+            //e.Graphics.DrawString(".", f8, Brushes.Black, new RectangleF(0, height2 += 100, 200, 20));
+            //e.Graphics.DrawString(".", f8, Brushes.Black, new RectangleF(0, height2 += 100, 200, 20));
+            //e.Graphics.DrawString("", font, Brushes.Black, new RectangleF(0, y += 20, width, 20));
+            //e.Graphics.DrawString("", font, Brushes.Black, new RectangleF(0, y += 20, width, 20));
+            //e.Graphics.DrawString("__________________________________", font, Brushes.Black, new RectangleF(0, y += 20, width, 20));
+            //e.Graphics.DrawString("SELLO Y FIRMA", font, Brushes.Black, new RectangleF(0, y += 20, width, 20));
+
+
+            e.Graphics.DrawString("~ __________________________________ ~", f10, Brushes.Black, centermargin, 70 + height2, center);
+            e.Graphics.DrawString("~ SELLO Y FIRMA ~", f8, Brushes.Black, centermargin, 85 + height2, center);
+
+        }
+
         private void textBoxMermas_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
@@ -1862,6 +2100,157 @@ private void Cambio(string SOrigen, string MOrigen, string SDestino, string MDes
             }
         }
 
+        private void CargarMermas()
+        {
+
+            con.Open();
+            //SqlDataAdapter datos = new SqlDataAdapter("SELECT  TIQUETSLIN.CODARTICULO, TIQUETSLIN.DESCRIPCION, SUM(TIQUETSLIN.UNIDADES) AS UDS FROM TIQUETSLIN INNER JOIN ARTICULOSCAMPOSLIBRES ON TIQUETSLIN.CODARTICULO = ARTICULOSCAMPOSLIBRES.CODARTICULO WHERE (TIQUETSLIN.HORA BETWEEN CONVERT(DATETIME, '"+dtpInicio.Value.ToString("yyyy-MM-dd")+ " 00:00:00', 102) AND CONVERT(DATETIME, '"+dtpFinal.Value.ToString("yyyy-MM-dd") + " 23:59:59', 102)) AND (ARTICULOSCAMPOSLIBRES.INDUCIDA = 'T') GROUP BY TIQUETSLIN.CODARTICULO, TIQUETSLIN.DESCRIPCION ORDER BY UDS DESC", con);
+            SqlDataAdapter datos = new SqlDataAdapter("SELECT  ID, REFERENCIA, DESCRIPCION, UNIDADES as [UDS MERMADAS] FROM  TMERMAS WHERE  (CONVERT(DATE, FECHA, 102) = CONVERT(DATE, '" + dtpIniMermas.Value.ToString("yyyy-MM-dd") + " 00:00:00', 102)) ORDER BY ID", con);
+            DataSet data = new DataSet();
+
+            datos.Fill(data);
+            if (data.Tables[0].Rows.Count > 0)
+            {
+
+                DGWMermas.Enabled = true;
+                DGWMermas.DataSource = data.Tables[0];
+                con.Close();
+                ServiceMermas();
+            }
+            else { DGWMermas.DataSource = null; DGWMermas.Rows.Clear(); con.Close(); bnImprime.Enabled = false; }
+        }
+
+        private void ServiceMermas()
+        {
+
+            try
+            {
+
+                    empList.Clear();
+                
+                    con.Open();
+                    SqlDataAdapter consulta2 = new SqlDataAdapter();
+                    DataSet datos2 = new DataSet();
+                    consulta2.SelectCommand = new SqlCommand("SELECT ID, FECHA, SERIE, NUMERO, CODARTICULO, REFERENCIA, DESCRIPCION, UNIDADES, PRECIO, JUSTIFICACION, COMENTARIOS, USUARIO, ENVIADO   FROM  TMERMAS WHERE  (CONVERT(DATE, FECHA, 102) = CONVERT(DATE, '" + dtpIniMermas.Value.ToString("yyyy-MM-dd") + " 00:00:00', 102)) ORDER BY ID", con);
+
+
+                    consulta2.Fill(datos2);
+                    con.Close();
+
+
+                    if (datos2.Tables[0].Rows.Count > 0)
+                    {
+
+                        empList = datos2.Tables[0].AsEnumerable().DefaultIfEmpty()
+                         .Select(dataRow => new Mermas
+                         {
+
+                             Id = 0,
+                             Fecha = Convert.ToString(dataRow.Field<DateTime>("FECHA").ToString("O")),
+                             Serie = dataRow.Field<string>("SERIE"),
+                             Numero = dataRow.Field<int>("NUMERO"),
+                             Codarticulo = dataRow.Field<int>("CODARTICULO"),
+                             Referencia = dataRow.Field<string>("REFERENCIA"),
+                             Descripcion = dataRow.Field<string>("DESCRIPCION"),
+                             unidades = dataRow.Field<double>("UNIDADES"),
+                             precio = dataRow.Field<double>("PRECIO"),
+                             Justificacion = dataRow.Field<string>("JUSTIFICACION"),
+                             Comentarios = dataRow.Field<string>("COMENTARIOS"),
+                             Usuario = dataRow.Field<string>("USUARIO"),
+
+                         }).ToList();
+                         bnImprime.Enabled = true;
+
+
+
+
+
+                    }
+                    else
+                    {
+                         
+
+                    }
+
+      
+
+
+            }
+            catch (Exception ex)
+            {
+
+                con.Close();
+            }
+
+
+        }
+
+        //CONSULTA ALMACEN MERMA
+        public string consulAlmMerma()
+        {
+
+            con.Open();
+            string query = "SELECT TOP (1) CODALMDEST FROM TRASPALMACEN WHERE(CODALMDEST LIKE N'%M') ORDER BY FECHA DESC";
+            SqlCommand cmd = new SqlCommand(query, con);
+            SqlDataReader reg = cmd.ExecuteReader();
+            if (reg.Read())
+            {
+                String regis = reg["CODALMDEST"].ToString();
+                con.Close();
+                return regis;
+
+            }
+
+            else
+            {
+                con.Close();
+                return "Null";
+
+            }
+
+        }
+        //CONSULTA ALMACEN NOMBRE
+        public string consulAlmNom()
+        {
+
+            con.Open();
+            string query = "SELECT   TOP (1) CODALMACEN, NOMBREALMACEN FROM     ALMACEN WHERE   (CODALMACEN = N'"+AlmMermas+"')";
+            SqlCommand cmd = new SqlCommand(query, con);
+            SqlDataReader reg = cmd.ExecuteReader();
+            if (reg.Read())
+            {
+                String regis = reg["NOMBREALMACEN"].ToString();
+                con.Close();
+                return regis;
+
+            }
+
+            else
+            {
+                con.Close();
+                return "Null";
+
+            }
+
+        }
+
+        public class Mermas
+        {
+
+            public int Id { get; set; }
+            public string Fecha { get; set; }
+            public string Serie { get; set; }
+            public int Numero { get; set; }
+            public int Codarticulo { get; set; }
+            public string Referencia { get; set; }
+            public string Descripcion { get; set; }
+            public double unidades { get; set; }
+            public double precio { get; set; }
+            public string Justificacion { get; set; }
+            public string Comentarios { get; set; }
+            public string Usuario { get; set; }
+
+        }
     }
 }
 

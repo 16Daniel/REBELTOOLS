@@ -163,7 +163,7 @@ namespace TRW1
                             this.Hide();
                             Limpiar();
                         }
-                        if (acesso == "3")
+                        if (acesso == "3" || acesso == "4")
                         {
                             MessageBox.Show("\nHas Iniciando Sesion como CAJERO", "Bienvenido", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             Administrador frm = new Administrador();
@@ -408,11 +408,6 @@ namespace TRW1
 
               }
           }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void btnReiniciaFront_Click(object sender, EventArgs e)
         {
